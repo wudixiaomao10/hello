@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carrysu.eatfood.mapper.EatfoodMapper">
+    <select id="selectFood" parameterType="String" resultType="com.carrysu.eatfood.entity.Eatfood">
+        select * from requiem_food where food = #{food}
+    </select>
+
+    <insert id="addFood" parameterType="com.carrysu.eatfood.entity.Eatfood" useGeneratedKeys="true" keyProperty="id">
+        insert into requiem_food (id, food, window) values (#{id,jdbcType=INTEGER}, #{food,jdbcType=VARCHAR}, #{window,jdbcType=VARCHAR})
+    </insert>
+
+    <delete id="deleteFood" parameterType="String">
+        delete from requiem_food where food = #{food}
+    </delete>
+
+
+
+    <update id="updateFood" parameterType="com.carrysu.eatfood.entity.Eatfood">
+        update requiem_food
+        set id = #{id}, food = #{food}, window=#{window}
+        where id = #{id}
+    </update>
+</mapper>
